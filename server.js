@@ -7,7 +7,7 @@ const logger = require('morgan');
 
 //router modules
 const indexRouter = require('./routes/index');
-usersRouter = require('./routes/users');
+todosRouter = require('./routes/todos');
 
 const app = express();
 
@@ -22,8 +22,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //router middleware mounted
+//the first arg is the 'starts with' path
+//the paths within the route modules are combined to the 'starts with' path
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/todos', todosRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
