@@ -13,6 +13,7 @@ function index(req, res) {
 
 function show(req, res){
   res.render('todos/show', {
+    //getting id based on parameter passed in
     todo: Todo.getOne(req.params.id),
   });
 }
