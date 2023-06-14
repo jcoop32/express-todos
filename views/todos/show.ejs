@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Show</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-    <h1></h1>
-</body>
+    <a href="/todos">Back to List</a>
+    <h3><%= todo.todo%></h3>
+    <h3>Complete: <%= todo.done ? 'Yes' : 'No'%></h3>
+  </body>
 </html>
