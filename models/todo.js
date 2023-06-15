@@ -8,6 +8,7 @@ const todos = [
     getAll,
     getOne,
     create,
+    deleteOne,
   };
 	
   function getAll() {
@@ -26,4 +27,13 @@ const todos = [
     todo.id = Date.now() % 1000000;
     todo.done = false;
     todos.push(todo)
+  }
+
+  function deleteOne(id){
+    id = parseInt(id);
+    //find index of todo
+    const idx = todos.findIndex(todo => todo.id === id)
+    todos.splice(idx, 1)
+    
+
   }

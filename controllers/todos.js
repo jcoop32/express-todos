@@ -5,6 +5,7 @@ module.exports = {
     show,
     new: newTodo,
     create,
+    delete: deleteTodo,
 };
 
 function index(req, res) {
@@ -28,10 +29,14 @@ function show(req, res){
   });
 }
 
-
 function create(req, res){
   console.log(req.body);
   //models are responsilbe for cruding data
   Todo.create(req.body)
+  res.redirect('/todos');
+}
+
+function deleteTodo(req, res){
+  Todo.deleteOne(req.params.id);
   res.redirect('/todos');
 }

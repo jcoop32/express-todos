@@ -4,6 +4,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const methodOverride = require('method-override')
 
 //router modules
 const indexRouter = require('./routes/index');
@@ -38,6 +39,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 //if the request is for a static asset, returns the file
 app.use(express.static(path.join(__dirname, 'public')));
+//method override middleware mount
+//looks for the query param of _method and outputs the value of it
+app.use(methodOverride('_method'));
 
 //router middleware mounted
 //the first arg is the 'starts with' path
