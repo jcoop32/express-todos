@@ -27,7 +27,6 @@ app.use(function(req, res, next){
   next();
 })
 
-
 //logs in the terminal the HTTP request info
 app.use(logger('dev'));
 //Processes data sent in the body of the request, if it is JSON
