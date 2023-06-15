@@ -8,9 +8,9 @@ a {
 }
 .delete-form {
   display: inline-block;
-  margin-right: 10px;
+  margin-right: 5px;
 }
-	
+
 .delete-form button {
   color: red;
 }

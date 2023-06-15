@@ -1,0 +1,8 @@
+<%- include('../partials/header')%>
+
+<form action="/todos/<%= todo.id%>?_method=PUT" method="POST">
+    <input type="text" placeholder="edit" name="todo" value="<%=todo.todo%>">
+    <button type="submit">Update To-Do</button>
+</form>
+
+<%- include('../partials/footer')%>

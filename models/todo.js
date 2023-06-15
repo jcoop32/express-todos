@@ -9,6 +9,7 @@ const todos = [
     getOne,
     create,
     deleteOne,
+    update,
   };
 	
   function getAll() {
@@ -34,6 +35,11 @@ const todos = [
     //find index of todo
     const idx = todos.findIndex(todo => todo.id === id)
     todos.splice(idx, 1)
-    
+  }
 
+  function update(id, editTodo){
+    id = parseInt(id);
+    //find index of todo
+    const idx = todos.findIndex(todo => todo.id === id)
+    todos[idx].todo = editTodo.todo
   }
