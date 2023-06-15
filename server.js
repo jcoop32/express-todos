@@ -7,6 +7,7 @@ const logger = require('morgan');
 
 //router modules
 const indexRouter = require('./routes/index');
+const { time } = require('console');
 todosRouter = require('./routes/todos');
 
 const app = express();
@@ -15,10 +16,28 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 //middleware mounted
+
+//mount middleware into the middleware/request pipeline 
+//app.use(optional-[starts with path]<middleware function> [, <middleware function>])
+
+app.use(function(req, res, next){
+  // console.log('Hello')
+  res.locals.time = new Date().toLocaleTimeString()
+  console.log(res.locals.time);
+  next();
+})
+
+
+//logs in the terminal the HTTP request info
 app.use(logger('dev'));
+//Processes data sent in the body of the request, if it is JSON
 app.use(express.json());
+//Processes data sent in 'form' body of the request
+//it will create a property on req.body for each <input>, <select> and/or <textarea> in the <form>
 app.use(express.urlencoded({ extended: false }));
+//add a cookies property for each cookie sent in the request
 app.use(cookieParser());
+//if the request is for a static asset, returns the file
 app.use(express.static(path.join(__dirname, 'public')));
 
 //router middleware mounted
